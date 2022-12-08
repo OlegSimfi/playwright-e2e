@@ -1,0 +1,21 @@
+{
+  "name": "playwright-e2e",
+  "version": "1.0.0",
+  "description": "http://www.webdriveruniversity.com/",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlegSimfi/playwright-e2e.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OlegSimfi/playwright-e2e/issues"
+  },
+  "homepage": "https://github.com/OlegSimfi/playwright-e2e#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.28.1"
+  }
+}
