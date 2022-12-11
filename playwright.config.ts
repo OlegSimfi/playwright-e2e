@@ -1,5 +1,6 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
+import {Timeout} from "./src/constants/timeouts";
 
 /**
  * Read environment variables from file.
@@ -11,15 +12,15 @@ import { devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-  testDir: './tests',
+  testDir: './src/tests',
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
+    timeout: Timeout.L
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 5000,
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -34,7 +35,13 @@ const config: PlaywrightTestConfig = {
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
-    actionTimeout: 0,
+    headless: true,
+    actionTimeout: Timeout.L,
+    navigationTimeout: Timeout.L,
+    baseURL: 'http://www.webdriveruniversity.com/',
+    // storageState: 'e2e/storageState.json',
+    screenshot: 'only-on-failure',
+    ignoreHTTPSErrors: true,
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
 

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "http://www.webdriveruniversity.com/",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/OlegSimfi/playwright-e2e.git"
