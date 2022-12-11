@@ -23,4 +23,14 @@ export abstract class BasePage {
     async scrollIntoView(element: Locator): Promise<void> {
         await element.scrollIntoViewIfNeeded();
     }
+
+    async openNewTab(): Promise<void> {
+        const context = this.page.context();
+        const [newPage] = await Promise.all([
+            context.waitForEvent('page'),
+            this.page.click('a[target="_blank"]') // Opens a new tab
+        ])
+        await newPage.waitForLoadState();
+        console.log('DEBUG', await newPage.title());
+    }
 }
