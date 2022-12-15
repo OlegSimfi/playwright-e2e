@@ -1,10 +1,15 @@
 import { Locator, Page } from '@playwright/test';
 import {Timeout} from "../constants/timeouts";
+import config from "../../playwright.config";
 export abstract class BasePage {
     constructor(protected readonly page: Page) {}
 
     public idLocator(element: string): Locator {
         return this.page.locator(`[id='${element}']`);
+    }
+
+    public input(element: string): Locator {
+        return this.page.locator(`input[name='${element}']`);
     }
 
     public each<T>(data: T[], fn: (value: T) => void): void {
@@ -14,6 +19,10 @@ export abstract class BasePage {
     async getText(element: Locator): Promise<string> {
         await element.scrollIntoViewIfNeeded();
         return element.innerText();
+    }
+
+    async getInputValue(element: Locator): Promise<string> {
+        return element.inputValue();
     }
 
     async waitForVisibility(element: Locator): Promise<void> {
@@ -31,6 +40,9 @@ export abstract class BasePage {
             this.page.click('a[target="_blank"]') // Opens a new tab
         ])
         await newPage.waitForLoadState();
-        console.log('DEBUG', await newPage.title());
+    }
+
+    async openPageUrl(url): Promise<void> {
+        await this.page.goto(`${config.use.baseURL}${url}`);
     }
 }
