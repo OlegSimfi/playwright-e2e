@@ -10,7 +10,7 @@ test.describe('Contact Us functionality', () => {
         await contactUsPage.waitForVisibility(contactUsPage.title);
     });
 
-    test('should verify the Contact page is opened', async ({mainPage, contactUsPage}) => {
+    test('should verify the Contact page is opened', async ({contactUsPage}) => {
         expect(await contactUsPage.getText(contactUsPage.title)).toBe(contactUsTitle);
     });
 
@@ -29,7 +29,7 @@ test.describe('Contact Us functionality', () => {
             [
                 contactUsPage.input(contactUsPage.firstName),
                 contactUsPage.input(contactUsPage.lastName),
-                contactUsPage.input(contactUsPage.email),
+                contactUsPage.input(contactUsPage.email)
             ],
             async formInputs => {
                 expect(await contactUsPage.getInputValue(formInputs)).toBe('');
