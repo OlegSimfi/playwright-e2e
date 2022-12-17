@@ -2,7 +2,6 @@ import {expect} from '@playwright/test';
 
 import {test} from '../fixtures/page.fixtures';
 import {urls} from "../data/urls";
-import {contactUsTitle, successMessage} from "../data/contact-us";
 
 test.describe('iFrame carousel', () => {
     test.beforeEach(async ({iFramePage}) => {
