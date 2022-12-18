@@ -3,10 +3,12 @@ import { test as base } from '@playwright/test';
 import {MainPage} from '../pages/main.page';
 import {ContactUsPage} from "../pages/contact-us.page";
 import {IframePage} from "../pages/iframe.page";
+import {DatepickerPage} from "../pages/datepicker.page";
 export const test = base.extend<{
     mainPage: MainPage;
     contactUsPage: ContactUsPage;
     iFramePage: IframePage;
+    datepickerPage: DatepickerPage;
 
 }>({
     mainPage: async ({ page }, use) => {
@@ -17,6 +19,9 @@ export const test = base.extend<{
     },
     iFramePage: async ({ page }, use) => {
         await use(new IframePage(page));
+    },
+    datepickerPage: async ({ page }, use) => {
+        await use(new DatepickerPage(page));
     }
 });
 export const { expect } = test;

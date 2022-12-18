@@ -29,6 +29,10 @@ export abstract class BasePage {
         return element.waitFor({ state: 'visible', timeout: Timeout.L });
     }
 
+    async waitForInvisible(element: Locator): Promise<void> {
+        return element.waitFor({ state: 'hidden' });
+    }
+
     async scrollIntoView(element: Locator): Promise<void> {
         await element.scrollIntoViewIfNeeded();
     }
