@@ -29,7 +29,7 @@ const config: PlaywrightTestConfig = {
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: 1,
+  workers: 3,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -55,7 +55,7 @@ const config: PlaywrightTestConfig = {
       name: 'chrome',
       use: {
         ...devices['Desktop Chrome'],
-        headless: false,
+        headless: true,
         launchOptions: {
           slowMo: 100
         },
